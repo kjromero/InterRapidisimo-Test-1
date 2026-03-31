@@ -6,5 +6,5 @@ import com.kenny.interrapidisimotest1.domain.model.User
 
 interface AuthRepository {
     suspend fun login(): Either<DomainError, User>
-    suspend fun getStoredUser(): User?
+    suspend fun getStoredUser(): Result<User?>
 }

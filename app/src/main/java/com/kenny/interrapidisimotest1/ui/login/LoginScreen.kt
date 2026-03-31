@@ -41,7 +41,7 @@ import com.kenny.interrapidisimotest1.ui.login.state.LoginUiEvent
 import com.kenny.interrapidisimotest1.ui.login.state.LoginUiState
 import com.kenny.interrapidisimotest1.ui.login.state.LoginViewModel
 import com.kenny.interrapidisimotest1.ui.theme.InterBackground
-import com.kenny.interrapidisimotest1.ui.theme.InterBlue
+import com.kenny.interrapidisimotest1.ui.theme.InterBlack
 import com.kenny.interrapidisimotest1.ui.theme.InterSurface
 import com.kenny.interrapidisimotest1.ui.theme.InterYellow
 
@@ -65,7 +65,7 @@ fun LoginScreen(onNavigateToHome: () -> Unit) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(InterBlue)
+                    .background(InterBlack)
                     .statusBarsPadding()
                     .padding(vertical = 48.dp),
                 contentAlignment = Alignment.Center,
@@ -82,7 +82,7 @@ fun LoginScreen(onNavigateToHome: () -> Unit) {
                         letterSpacing = 2.sp,
                     )
                     Text(
-                        text = "Test 1",
+                        text = "Kenny Test",
                         style = MaterialTheme.typography.bodyMedium,
                         color = InterYellow,
                     )
@@ -122,7 +122,7 @@ fun LoginScreen(onNavigateToHome: () -> Unit) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(52.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = InterBlue),
+                        colors = ButtonDefaults.buttonColors(containerColor = InterBlack),
                         shape = RoundedCornerShape(8.dp),
                     ) {
                         if (state.isLoginLoading) {

@@ -10,5 +10,5 @@ import javax.inject.Inject
 class GetStoredUserUseCase @Inject constructor(
     private val authRepository: AuthRepository,
 ) {
-    suspend operator fun invoke(): User? = authRepository.getStoredUser()
+    suspend operator fun invoke(): Result<User?> = authRepository.getStoredUser()
 }

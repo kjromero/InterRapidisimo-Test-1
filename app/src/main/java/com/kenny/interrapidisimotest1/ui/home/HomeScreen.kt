@@ -32,13 +32,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.kenny.interrapidisimotest1.domain.model.User
 import com.kenny.interrapidisimotest1.ui.common.ErrorMessage
 import com.kenny.interrapidisimotest1.ui.common.LoadingOverlay
 import com.kenny.interrapidisimotest1.ui.home.state.HomeUiState
 import com.kenny.interrapidisimotest1.ui.home.state.HomeViewModel
 import com.kenny.interrapidisimotest1.ui.theme.InterBackground
-import com.kenny.interrapidisimotest1.ui.theme.InterBlue
+import com.kenny.interrapidisimotest1.ui.theme.InterBlack
 import com.kenny.interrapidisimotest1.ui.theme.InterOnSurface
 import com.kenny.interrapidisimotest1.ui.theme.InterRed
 import com.kenny.interrapidisimotest1.ui.theme.InterYellow
@@ -50,7 +51,7 @@ fun HomeScreen(
     onNavigateToLocalities: () -> Unit,
 ) {
     val viewModel: HomeViewModel = hiltViewModel()
-    val uiState by viewModel.uiState.collectAsState()
+    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {
@@ -63,7 +64,7 @@ fun HomeScreen(
                     )
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = InterBlue,
+                    containerColor = InterBlack,
                     titleContentColor = Color.White,
                 ),
             )
@@ -113,7 +114,7 @@ private fun HomeContent(
                 Text(
                     text = "Información del Usuario",
                     style = MaterialTheme.typography.titleMedium,
-                    color = InterBlue,
+                    color = InterBlack,
                     fontWeight = FontWeight.SemiBold,
                 )
                 HorizontalDivider(color = InterYellow, thickness = 2.dp)
@@ -130,7 +131,7 @@ private fun HomeContent(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(52.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = InterBlue),
+            colors = ButtonDefaults.buttonColors(containerColor = InterBlack),
             shape = RoundedCornerShape(8.dp),
         ) {
             Text("Tablas", fontSize = 16.sp, fontWeight = FontWeight.SemiBold)

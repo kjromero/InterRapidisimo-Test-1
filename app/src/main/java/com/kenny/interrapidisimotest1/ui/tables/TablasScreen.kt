@@ -43,7 +43,7 @@ import com.kenny.interrapidisimotest1.ui.common.toUiMessage
 import com.kenny.interrapidisimotest1.ui.tables.state.TablasViewModel
 import com.kenny.interrapidisimotest1.ui.tables.state.TablesUiState
 import com.kenny.interrapidisimotest1.ui.theme.InterBackground
-import com.kenny.interrapidisimotest1.ui.theme.InterBlue
+import com.kenny.interrapidisimotest1.ui.theme.InterBlack
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -64,7 +64,7 @@ fun TablasScreen(onBack: () -> Unit) {
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = InterBlue,
+                    containerColor = InterBlack,
                     titleContentColor = Color.White,
                     navigationIconContentColor = Color.White,
                 ),
@@ -118,7 +118,7 @@ private fun TableItem(table: Table) {
                     modifier = Modifier
                         .width(4.dp)
                         .height(20.dp)
-                        .background(InterBlue, RoundedCornerShape(2.dp)),
+                        .background(InterBlack, RoundedCornerShape(2.dp)),
                 )
                 Spacer(modifier = Modifier.width(10.dp))
                 Text(
@@ -140,7 +140,7 @@ private fun TableItem(table: Table) {
                 Text(
                     text = "Campos: ${table.fieldCount}",
                     style = MaterialTheme.typography.labelSmall,
-                    color = InterBlue,
+                    color = InterBlack,
                     modifier = Modifier.padding(start = 14.dp, top = 2.dp),
                 )
             }

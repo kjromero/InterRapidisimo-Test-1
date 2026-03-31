@@ -7,6 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,8 +25,15 @@ class HomeViewModel @Inject constructor(
 
     private fun loadUser() {
         viewModelScope.launch {
-            val user = getStoredUserUseCase()
-            _uiState.value = if (user != null) HomeUiState.Ready(user) else HomeUiState.Error
+            getStoredUserUseCase.invoke()
+                .onSuccess { user ->
+                _uiState.update {
+                    if (user != null) HomeUiState.Ready(user) else HomeUiState.Error
+                }
+            }
+                .onFailure {
+                    _uiState.update { HomeUiState.Error }
+                }
         }
     }
 }

@@ -6,7 +6,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.kenny.interrapidisimotest1.ui.theme.InterBlue
+import com.kenny.interrapidisimotest1.ui.theme.InterBlack
 
 @Composable
 fun LoadingOverlay(modifier: Modifier = Modifier) {
@@ -14,6 +14,6 @@ fun LoadingOverlay(modifier: Modifier = Modifier) {
         modifier = modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        CircularProgressIndicator(color = InterBlue)
+        CircularProgressIndicator(color = InterBlack)
     }
 }

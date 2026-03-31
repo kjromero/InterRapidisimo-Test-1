@@ -5,7 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kenny.interrapidisimotest1.ui.home.HomeScreen
-import com.kenny.interrapidisimotest1.ui.localities.LocalidadesScreen
+import com.kenny.interrapidisimotest1.ui.localities.LocalitiesScreen
 import com.kenny.interrapidisimotest1.ui.login.LoginScreen
 import com.kenny.interrapidisimotest1.ui.tables.TablasScreen
 
@@ -39,7 +39,7 @@ fun AppNavGraph() {
         }
 
         composable(Screen.Localities.route) {
-            LocalidadesScreen(onBack = { navController.popBackStack() })
+            LocalitiesScreen(onBack = { navController.popBackStack() })
         }
     }
 }

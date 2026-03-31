@@ -41,6 +41,17 @@ class AuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getStoredUser(): User? =
-        userDao.getUser()?.let { User(it.username, it.identification, it.name) }
+    override suspend fun getStoredUser(): Result<User?> {
+        val result = userDao.getUser()?.let {
+            Result.success(
+                User(
+                    it.username,
+                    it.identification,
+                    it.name
+                )
+            )
+        } ?: Result.failure(Exception("No user found"))
+        return  result
+    }
+
 }

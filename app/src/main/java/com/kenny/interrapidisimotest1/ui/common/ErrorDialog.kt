@@ -11,10 +11,16 @@ import com.kenny.interrapidisimotest1.ui.theme.InterSurface
 fun ErrorDialog(message: String, onDismiss: () -> Unit) {
     AlertDialog(
         onDismissRequest = onDismiss,
-        title = { Text("Error", color = InterRed) },
-        text = { Text(message) },
+        title = {
+            Text("Error", color = InterRed)
+        },
+        text = {
+            Text(message)
+        },
         confirmButton = {
-            TextButton(onClick = onDismiss) { Text("Aceptar") }
+            TextButton(onClick = onDismiss) {
+                Text("Aceptar")
+            }
         },
         containerColor = InterSurface,
     )

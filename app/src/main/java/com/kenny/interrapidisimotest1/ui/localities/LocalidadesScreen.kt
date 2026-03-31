@@ -42,11 +42,11 @@ import com.kenny.interrapidisimotest1.ui.common.toUiMessage
 import com.kenny.interrapidisimotest1.ui.localities.state.LocalitiesUiState
 import com.kenny.interrapidisimotest1.ui.localities.state.LocalitiesViewModel
 import com.kenny.interrapidisimotest1.ui.theme.InterBackground
-import com.kenny.interrapidisimotest1.ui.theme.InterBlue
+import com.kenny.interrapidisimotest1.ui.theme.InterBlack
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LocalidadesScreen(onBack: () -> Unit) {
+fun LocalitiesScreen(onBack: () -> Unit) {
     val viewModel: LocalitiesViewModel = hiltViewModel()
     val uiState by viewModel.uiState.collectAsState()
 
@@ -63,7 +63,7 @@ fun LocalidadesScreen(onBack: () -> Unit) {
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = InterBlue,
+                    containerColor = InterBlack,
                     titleContentColor = Color.White,
                     navigationIconContentColor = Color.White,
                 ),
@@ -78,7 +78,7 @@ fun LocalidadesScreen(onBack: () -> Unit) {
         ) {
             when (val state = uiState) {
                 is LocalitiesUiState.Loading -> LoadingOverlay()
-                is LocalitiesUiState.Success -> LocalidadesList(state.localities)
+                is LocalitiesUiState.Success -> LocalitiesList(state.localities)
                 is LocalitiesUiState.Error -> ErrorMessage(state.error.toUiMessage())
             }
         }
@@ -86,7 +86,7 @@ fun LocalidadesScreen(onBack: () -> Unit) {
 }
 
 @Composable
-private fun LocalidadesList(localities: List<Locality>) {
+private fun LocalitiesList(localities: List<Locality>) {
     if (localities.isEmpty()) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text("No hay localidades disponibles", style = MaterialTheme.typography.bodyLarge)
@@ -97,14 +97,14 @@ private fun LocalidadesList(localities: List<Locality>) {
         contentPadding = PaddingValues(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(localities) { localidad ->
-            LocalidadItem(localidad)
+        items(localities) { locality ->
+            LocalityItem(locality)
         }
     }
 }
 
 @Composable
-private fun LocalidadItem(localidad: Locality) {
+private fun LocalityItem(locality: Locality) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(8.dp),
@@ -117,11 +117,11 @@ private fun LocalidadItem(localidad: Locality) {
         ) {
             Box(
                 modifier = Modifier
-                    .background(InterBlue, RoundedCornerShape(4.dp))
+                    .background(InterBlack, RoundedCornerShape(4.dp))
                     .padding(horizontal = 10.dp, vertical = 6.dp),
             ) {
                 Text(
-                    text = localidad.cityAbbreviation,
+                    text = locality.cityAbbreviation,
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 12.sp,
@@ -129,7 +129,7 @@ private fun LocalidadItem(localidad: Locality) {
             }
             Spacer(modifier = Modifier.width(14.dp))
             Text(
-                text = localidad.fullName,
+                text = locality.fullName,
                 style = MaterialTheme.typography.bodyMedium,
             )
         }
